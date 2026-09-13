@@ -21,6 +21,7 @@ class UserNotFoundException(Exception):
     def __init__(self, name: str):
         self.name = name
 
+# This tells FastAPI: Whenever UserNotFoundException occurs, call user_not_found_handler.
 @app.exception_handler(UserNotFoundException)
 def user_not_found_handler(request: Request, exc: UserNotFoundException):
     return JSONResponse(
